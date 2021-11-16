@@ -13,6 +13,7 @@ router.get('/About', function (req, res, next) {
 
 // fetch exhibitions' data from db
 router.get('/', function (req, res, next) {
+  console.log(req.session);
   let sql = 'SELECT * FROM `exhibition` WHERE 1; ';
   let params = [];
   req.sql(sql, params, function (err, result) {

@@ -22,14 +22,16 @@ let searchMemberData = (formData, req) => {
 
 router.post('/', async function (req, res, next) {
   let formData = req.body;
-  console.log('formData', formData);
+  // console.log('formData', formData);
+  // console.log('userData');
   try {
-    await searchMemberData(formData, req);
+    let userData = await searchMemberData(formData, req);
     req.session.user = {
-      staff_id: formData['staff_id']
+      staff_id: userData['S_ID'], // ''內為資料庫欄位名稱
+      staff_role: userData['Role']
     };
-    console.log(req.session.user);
-    res.status(200).redirect('/users/StaffManagement')
+    // console.log(req.session.user);
+    res.status(200).redirect('/management/StaffManagement')
   } catch(e) {
     if(e == 404) {
       res.status(e).send('登入失敗，無此帳號');

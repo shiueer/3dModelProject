@@ -19,7 +19,7 @@ function showEPic(Edata) {
 
 // show M_Pic
 function showMPic(Mdata) {
-    console.log(Mdata);
+    // console.log(Mdata);
     let htmlStr = `<div class="row align-items-center">`
     for (let i = 0; i < Mdata.length; i++) {
         // console.log(Mdata[i].M_Pic);
@@ -30,7 +30,7 @@ function showMPic(Mdata) {
         }
     }
     // htmlStr += `</div>`
-    console.log(htmlStr);
+    // console.log(htmlStr);
     $('#exhibitionList').append(htmlStr);
 }
 

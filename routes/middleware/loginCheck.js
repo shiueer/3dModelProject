@@ -1,8 +1,9 @@
 loginCheck = (req, res, next) => {
+  console.log(req.session);
   if (req.session.user != undefined) {
     next();
   } else {
-    res.redirect('/Staff');
+    res.redirect('/management/Staff');
   }
 }
 
