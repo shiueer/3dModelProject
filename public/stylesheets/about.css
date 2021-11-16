@@ -1,0 +1,13 @@
+.carousel-item{
+    margin-top: 5vh;
+    height: 80vh;
+    width: 100vw;
+    background: #6c757d52;
+    padding-left: 16vw;
+    padding-top: 1.5vh;
+}
+#backbtn{
+    position: fixed;
+    right: 2%;
+    top: 80%;
+}
