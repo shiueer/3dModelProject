@@ -8,12 +8,9 @@ router.get('/About', function (req, res, next) {
   res.render('About', { title: '埔里基督教醫院 - 交趾尪仔俗語故事' });
 });
 
-
-
-
 // fetch exhibitions' data from db
 router.get('/', function (req, res, next) {
-  console.log(req.session);
+  // console.log(req.session);
   let sql = 'SELECT * FROM `exhibition` WHERE 1; ';
   let params = [];
   req.sql(sql, params, function (err, result) {
