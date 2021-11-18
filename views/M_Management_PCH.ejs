@@ -12,14 +12,15 @@
 <body>
     <% include ./Staff_navBar_login.ejs%>
     <div class="container text-center fw-bold mt-5">
-        <h2 class="text-center mt-5 fw-bold">展覽管理列表</h2>
+        <h2 class="text-center mt-5 fw-bold">模型管理列表</h2>
         <hr class="m-auto w-50 mt-5 mb-5">
-        <div id="EList"></div>
+        <div id="MList"></div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/javascripts/manage.js"></script>
     <script>
-        E_Manage(<%- JSON.stringify(EList) %>);
+        M_Manage_PCH(<%- JSON.stringify(MList) %>);
     </script>
 </body>
 </html>

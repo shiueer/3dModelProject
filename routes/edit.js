@@ -1,4 +1,5 @@
 var express = require('express');
+const session = require('express-session');
 var router = express.Router();
 
 const loginCheck = require('./middleware/loginCheck');
@@ -10,6 +11,7 @@ router.get('/M_Edit', loginCheck,function(req, res, next) {
   console.log(formData);
   let params = [formData.M_ID];
   let sql = 'SELECT * FROM `model` WHERE ? = `model`.`M_ID`; ';
+  let htmlStr = ``;
   req.sql(sql, params, function (err, result) {
     if (err) {
       console.log("[SELECT ERROR] -", err);

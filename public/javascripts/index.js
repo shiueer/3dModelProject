@@ -78,5 +78,5 @@ function changeLanguage(){
     // console.log('g_Mdata');
     // console.log(g_Mdata);
     lang = !lang;
-    showModel(g_Mdata)
+    showModel(g_Mdata);
 }

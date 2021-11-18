@@ -1,4 +1,5 @@
 var express = require('express');
+const session = require('express-session');
 var router = express.Router();
 
 const loginCheck = require('./middleware/loginCheck');
@@ -14,6 +15,7 @@ router.get('/StaffManagement',loginCheck, function (req, res, next) {
 });
 
 // show the list of model which can be edited
+
 router.get('/M_Management',loginCheck, function (req, res, next){
   let sql = 'SELECT * FROM `model` WHERE 1; ';
   let params = [];
@@ -33,9 +35,45 @@ router.get('/M_Management',loginCheck, function (req, res, next){
   })
 });
 
+//   router.get('/M_Management_PCH',loginCheck, function (req, res, next){
+//     let sql = 'SELECT * FROM `model` WHERE 1; ';
+//     let params = [];
+//     req.sql(sql, params, function (err, result) {
+//       if (err) {
+//         console.log("[SELECT ERROR] -", err);
+//         return;
+//       } else {
+//         if (result.length == 0) {
+//           console.log('No DATA found');
+//           res.render('M_Management_PCH', { title: '埔里基督教醫院 - 交趾尪仔俗語故事 模型管理', MList: '' });
+//         } else {
+//           // console.log(result);
+//           res.render('M_Management_PCH', { title: '埔里基督教醫院 - 交趾尪仔俗語故事 模型管理', MList: result });
+//         }
+//       }
+//     })
+//   });
+// }
+
 // show the list of exhibition which can be edited
 router.get('/E_Management',loginCheck, function (req, res, next){
-  res.render('E_Management', { title: '埔里基督教醫院 - 交趾尪仔俗語故事 展覽管理' });
+  let sql = 'SELECT * FROM `exhibition` WHERE 1; ';
+  let params = [];
+  req.sql(sql, params, function (err, result) {
+    if (err) {
+      console.log("[SELECT ERROR] -", err);
+      return;
+    } else {
+      if (result.length == 0) {
+        console.log('No DATA found');
+        res.render('E_Management', { title: '埔里基督教醫院 - 交趾尪仔俗語故事 展覽管理', EList: '' });
+      } else {
+        // console.log(result);
+        res.render('E_Management', { title: '埔里基督教醫院 - 交趾尪仔俗語故事 展覽管理', EList: result });
+      }
+    }
+  })
+  
 });
 
 // show the list of connection which can be edited
