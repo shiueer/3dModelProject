@@ -30,7 +30,7 @@ function M_Edit(MData){
         </div>`
         }
     }
-    htmlStr += `<div class="row text-center mt-3 mb-5">
+    htmlStr += `<div class="row text-center mt-5 mb-5">
     <div class="col-12">
     <button type="button" class="btn btn-primary" onclick="editable()">編輯/儲存</button>
     </div>
@@ -46,4 +46,11 @@ function editable(){
     M_Edit(g_MData);
     data = document.getElementById("#MData").value;
     console.log(data);
+}
+
+function E_Edit(EData) {
+    console.log(EData);
+    let keys = Object.keys(EData[0]);
+    let title = ['編號：', '作品名稱：', '創作年代：', '作品尺寸：', '作者：', '作品說明：', '作品說明：', '作品名稱錄音：', '作品說明錄音：', '作品模型：', '作品照片：']
+    let htmlStr = ``;
 }

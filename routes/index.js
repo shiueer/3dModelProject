@@ -8,10 +8,61 @@ router.get('/About', function (req, res, next) {
   res.render('About', { title: '埔里基督教醫院 - 交趾尪仔俗語故事' });
 });
 
+
+let getExhibition = (req) => {
+  return new Promise((rs, rj) => {
+    let sql = 'SELECT * FROM `exhibition` WHERE 1;'
+    req.sql(sql, function(err, result) {
+      if(err) {
+        console.log("[SELECT ERROR] -", err);
+        rj(err)
+      } else {
+        console.log(result);
+        if(result.length == 0) {
+          rj(404);
+        } else {
+          rs(result);
+        }
+      }
+    });
+  })
+}
+
+let get360Model = (req) => {
+  return new Promise((rs, rj) => { // rs->resolve, rj->reject
+    let sql = 'SELECT * FROM `pannellum` WHERE 1;'
+    req.sql(sql, function(err, result) {
+      if(err) {
+        console.log("[SELECT ERROR] -", err);
+        rj(err)
+      } else {
+        if(result.length == 0) {
+          rj(404);
+        } else {
+          rs(result);
+        }
+      }
+    });
+  })
+}
+
+
 // fetch exhibitions' data from db
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) { // async(使異部同步) 一定要搭配 try catch(原本是 promise.then)
+  try {
+    let exData = await getExhibition(req);
+    let modelData = await get360Model(req);
+    res.render('index', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', exData:exData, modelData:modelData})
+  } catch(error) {
+    console.log(error);
+    res.render('index', {title:'埔里基督教醫院 - 交趾尪仔俗語故事title', exData:'', modelData:''})
+  }
+});
+
+// fetch pannellum model data
+router.get('/index', function (req, res, next) {
   // console.log(req.session);
-  let sql = 'SELECT * FROM `exhibition` WHERE 1; ';
+  let sql = 'SELECT * FROM `pannellum` WHERE 1; ';
   let params = [];
   req.sql(sql, params, function (err, result) {
     if (err) {
@@ -20,10 +71,10 @@ router.get('/', function (req, res, next) {
     } else {
       if (result.length == 0) {
         console.log('No DATA found');
-        res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Edata: '' });
+        res.send('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Pdata: '' });
       } else {
         console.log(result);
-        res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Edata: result });
+        res.send('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Pdata: result });
       }
     }
   })

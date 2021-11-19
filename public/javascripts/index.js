@@ -2,12 +2,11 @@ let lang = true;
 let g_Mdata = undefined;
 
 // show E_Pic
-function showEPic(Edata) {
-    //console.log(Edata);
+function showEPic(exData) {
     let htmlStr = `<div class="row align-items-center"><div class="col-12"><p class="h1 text-center text-white pt-5">- 主題展覽 -</p></div>`
-    for (let i = 0; i < Edata.length; i++) {
-        // console.log(Edata[i].E_Pic);
-        htmlStr += `<div class="col-6"><a href="/ExhibitionList?id=${i + 1}"><img class="img-thumbnail w-50" src="${Edata[i]["E_Pic"]}"></a></div>`
+    for (let i = 0; i < exData.length; i++) {
+        // console.log(exData[i].E_Pic);
+        htmlStr += `<div class="col-6"><a href="/ExhibitionList?id=${i + 1}"><img class="img-thumbnail w-50" src="${exData[i]["E_Pic"]}"></a></div>`
         if ((i + 1) % 4 == 0) {
             htmlStr += `</div><div class="row">`
         }
@@ -79,4 +78,116 @@ function changeLanguage(){
     // console.log(g_Mdata);
     lang = !lang;
     showModel(g_Mdata);
+}
+
+// panellum
+function showP(modelData){
+    console.log(modelData);
+    let keys = Object.keys(modelData[0]);
+    // console.log(keys);
+    pannellum.viewer('panorama', {
+        "type": "cubemap",
+        "cubeMap": [
+            "/images/P_Pic/cube.jpg",      // F
+            "/images/P_Pic/cube_R.jpg",    // R
+            "/images/P_Pic/cube.jpg",      // B
+            "/images/P_Pic/cube_L.jpg",    // L
+            "/images/P_Pic/cube_front.jpg",//TOP
+            "/images/P_Pic/cube_front.jpg" //BOTTOM
+        ],
+        "autoLoad": true,
+        "autoRotate": -3,
+        "maxLevel":6,
+        "hfov":200,
+        "hotSpotDebug": true,
+        "hotSpots": [
+                {
+                    "pitch": 0,
+                    "yaw": 0,
+                    "createTooltipFunc": setHotspot,
+                    "createTooltipArgs": {
+                        "id": modelData[0][keys[0]],
+                        "text": modelData[0][keys[2]],
+                        "glb": modelData[0][keys[3]],
+                        "img": modelData[0][keys[4]]
+                    }
+                },
+                {
+                    "pitch": 0,
+                    "yaw": 35,
+                    "createTooltipFunc": setHotspot,
+                    "createTooltipArgs": {
+                        "id": modelData[1][keys[1]],
+                        "text": modelData[1][keys[2]],
+                        "glb": modelData[1][keys[3]],
+                        "img": modelData[1][keys[4]]
+                    }
+                },
+                {
+                    "pitch": 0,
+                    "yaw": -35,
+                    "createTooltipFunc": setHotspot,
+                    "createTooltipArgs": {
+                        "id": modelData[2][keys[0]],
+                        "text": modelData[2][keys[2]],
+                        "glb": modelData[2][keys[3]],
+                        "img": modelData[2][keys[4]]
+                    }
+                },
+                {
+                    "pitch": 0,
+                    "yaw": 145,
+                    "createTooltipFunc": setHotspot,
+                    "createTooltipArgs": {
+                        "id": modelData[3][keys[0]],
+                        "text": modelData[3][keys[2]],
+                        "glb": modelData[3][keys[3]],
+                        "img": modelData[3][keys[4]]
+                    }
+                },
+                {
+                    "pitch": 0,
+                    "yaw": 180,
+                    "createTooltipFunc": setHotspot,
+                    "createTooltipArgs": {
+                        "id": modelData[4][keys[0]],
+                        "text": modelData[4][keys[2]],
+                        "glb": modelData[4][keys[3]],
+                        "img": modelData[4][keys[4]]
+                    }
+                },
+                {
+                    "pitch": 0,
+                    "yaw": 215,
+                    "createTooltipFunc": setHotspot,
+                    "createTooltipArgs": {
+                        "id": modelData[5][keys[0]],
+                        "text": modelData[5][keys[2]],
+                        "glb": modelData[5][keys[3]],
+                        "img": modelData[5][keys[4]]
+                    }
+                }
+        ]
+    });
+};
+
+function setHotspot(hotSpotDiv, args) {
+    hotSpotDiv.classList.add('custom-tooltip');
+    var span = document.createElement('span');
+    span.innerHTML = args.text;
+
+    //console.log(hotSpotDiv,args)
+    hotSpotDiv.appendChild(span);
+
+    var elem = document.createElement("img");
+    hotSpotDiv.appendChild(elem);
+    elem.setAttribute("data-args", args.id);
+    elem.setAttribute("width", "100px"); //250px
+    elem.src = args.img;
+    elem.addEventListener("click", function() {
+        openDialog();
+    });
+    span.style.width = span.scrollWidth - 20 + 'px';
+    span.style.marginLeft = -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + 'px';
+    span.style.marginTop = -span.scrollHeight - 12 + 'px';
 }

@@ -1,5 +1,9 @@
-pannellum.viewer('panorama', {
-        "type": "equirectangular",
-        "panorama": "/images/cover.jpg",
-        "autoLoad": true
-});
+
+
+function hotspot(hotSpotDiv, args) {
+          hotSpotDiv.style.setProperty('background', '#ccc')
+}
+
+function MJason(Pdata,args){
+    console.log(Pdata);
+};
