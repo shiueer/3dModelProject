@@ -69,12 +69,11 @@ div.custom-tooltip:hover span:after {
 }
 
 #c{
-    margin-left: 1vw;
-    padding: 1vw;
+    padding: 0.5vw;
     background: gray;
-
     resize: horizontal;
     overflow: auto;
-    max-width: 300%;
+    max-width: 100%;
     height: calc(100vh - 16px);
+    position: relative;
 }
