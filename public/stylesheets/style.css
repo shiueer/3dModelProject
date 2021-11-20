@@ -33,3 +33,48 @@
     max-width: auto !important;
     height: auto;
 }
+
+div.custom-tooltip span {
+    visibility: hidden; 
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgba(70, 70, 70, 0.781);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    max-width: 15vw;
+    padding: 5px 10px;
+    margin-left: -220px;
+    cursor: default;
+}
+
+div.custom-tooltip:hover span {
+    visibility: visible;
+}
+
+div.custom-tooltip:hover span:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: rgba(70, 70, 70, 0.781) transparent transparent transparent;
+    bottom: -20px;
+    left: -10px;
+}
+
+.pnlm-sprite {
+    background-image: none !important;
+}
+.pnlm-controls{
+    display: none !important;
+}
+
+#c{
+    margin-left: 1vw;
+    padding: 1vw;
+    background: gray;
+
+    resize: horizontal;
+    overflow: auto;
+    max-width: 300%;
+    height: calc(100vh - 16px);
+}

@@ -12,36 +12,52 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6179006b7c83ea00126753bf&product=inline-share-buttons' async='async'></script>
+  <script type='text/javascript'
+    src='https://platform-api.sharethis.com/js/sharethis.js#property=6179006b7c83ea00126753bf&product=inline-share-buttons'
+    async='async'></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <% include ./navBar.ejs %>
-  <div class="container">
-    <div class="row" >
-      <div class="col" id="panorama"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col" id="panorama"></div>
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <canvas id="c"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="exhibition">
+      </div>
+      <% include ./backbtn.ejs %>
+        <% include ./shareButton.ejs %>
     </div>
-    <div id="exhibition">
-    </div>
-    <% include ./backbtn.ejs %>
-    <% include ./shareButton.ejs %>
-  </div>
     <% include ./footer.ejs %>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"
-    integrity="sha512-LF8ZB1iTwi4Qvkm4pekHG4a437Y9Af5ZuwbnW4GTbAWQeR2E4KW8WF+xH8b9psevV7wIlDMx1MH9YfPqgKhA/Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="/javascripts/index.js"></script>
-  <script src="/javascripts/pannellum.js"></script>
-  <script>
-    showEPic(<%- JSON.stringify(exData) %>);
-    showP(<%- JSON.stringify(modelData) %>);
-  </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"
+        integrity="sha512-LF8ZB1iTwi4Qvkm4pekHG4a437Y9Af5ZuwbnW4GTbAWQeR2E4KW8WF+xH8b9psevV7wIlDMx1MH9YfPqgKhA/Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="/javascripts/index.js"></script>
+      <script src="/javascripts/pannellum.js"></script>
+      <script>
+        showEPic(<%- JSON.stringify(exData) %>);
+        showP(<%- JSON.stringify(modelData) %>);
+      </script>
+      <script type="module" src="/javascripts/model_360.js"></script>
 </body>
 
 </html>
