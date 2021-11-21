@@ -109,8 +109,8 @@ function showP(modelData){
                  "id": modelData[0][keys[1]],
                  "text": modelData[0][keys[2]],
                  "glb": modelData[0][keys[3]],
-                 "img": modelData[0][keys[4]],
-                 "alt": modelData[0][keys[1]]             }
+                 "img": modelData[0][keys[4]]
+            }
          },
          {
              "pitch": 0,
@@ -120,8 +120,8 @@ function showP(modelData){
                  "id": modelData[1][keys[1]],
                  "text": modelData[1][keys[2]],
                  "glb": modelData[1][keys[3]],
-                 "img": modelData[1][keys[4]],
-                 "alt": modelData[1][keys[1]]             }
+                 "img": modelData[1][keys[4]]
+            }
          },
          {
              "pitch": 0,
@@ -131,10 +131,8 @@ function showP(modelData){
                  "id": modelData[2][keys[1]],
                  "text": modelData[2][keys[2]],
                  "glb": modelData[2][keys[3]],
-                 "img": modelData[2][keys[4]],
-                 "alt": modelData[2][keys[1]]
-
-             }
+                 "img": modelData[2][keys[4]]
+                  }
          },
          {
              "pitch": 0,
@@ -144,8 +142,8 @@ function showP(modelData){
                  "id": modelData[3][keys[1]],
                  "text": modelData[3][keys[2]],
                  "glb": modelData[3][keys[3]],
-                 "img": modelData[3][keys[4]],
-                 "alt": modelData[3][keys[1]]             }
+                 "img": modelData[3][keys[4]]
+            }
          },
          {
              "pitch": 0,
@@ -155,8 +153,8 @@ function showP(modelData){
                  "id": modelData[4][keys[1]],
                  "text": modelData[4][keys[2]],
                  "glb": modelData[4][keys[3]],
-                 "img": modelData[4][keys[4]],
-                 "alt": modelData[4][keys[1]]             }
+                 "img": modelData[4][keys[4]]
+            }
          },
          {
              "pitch": 0,
@@ -166,8 +164,8 @@ function showP(modelData){
                  "id": modelData[5][keys[1]],
                  "text": modelData[5][keys[2]],
                  "glb": modelData[5][keys[3]],
-                 "img": modelData[5][keys[4]],
-                 "alt": modelData[5][keys[1]]             }
+                 "img": modelData[5][keys[4]]
+            }
           }
         ]
     });
@@ -188,7 +186,7 @@ function setHotspot(hotSpotDiv, args) {
     elem.setAttribute("width", "130vw");
     elem.setAttribute("data-bs-toggle", "modal");  // set an inner window to put model
     elem.setAttribute("data-bs-target", "#exampleModal");
-    elem.setAttribute("alt",args.alt);
+    elem.setAttribute("alt",args.text);
     elem.style.marginRight = 15 + 'vw';
     elem.style.paddinfRight = 15 + 'vw';
     
@@ -196,20 +194,10 @@ function setHotspot(hotSpotDiv, args) {
     elem.addEventListener("click", function(e)  { //function(e) 去 get id
         // console.log(e.target.id);
         const myEvent = new CustomEvent('clickPic', {detail:{id:e.target.id}});
-
         window.dispatchEvent(myEvent);
-        // openModal();
-        // openModal(e.target.id)
+        // functionname(e.target.id)
     });
     span.style.width = span.scrollWidth - 20 + 'px';
     span.style.marginLeft = -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + 'px';
     span.style.marginTop = -span.scrollHeight - 12 + 'px';
-}
-
-function openModal() {
-    // console.log("success click");
-    // console.log(M_ID);
-
-    // var $img = $('a').getElementsByTagName("img")[0];
-    // console.log($img.alt);
 }
