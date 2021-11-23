@@ -88,17 +88,18 @@ function showP(modelData){
     pannellum.viewer('panorama', {
         "type": "cubemap",
         "cubeMap": [
-            "/images/P_Pic/cube.jpg",      // F
-            "/images/P_Pic/cube_R.jpg",    // R
-            "/images/P_Pic/cube.jpg",      // B
-            "/images/P_Pic/cube_L.jpg",    // L
-            "/images/P_Pic/cube_front.jpg",//TOP
-            "/images/P_Pic/cube_front.jpg" //BOTTOM
+            "/images/P_Pic/cube_front.jpg", // F
+            "/images/P_Pic/cube_R.jpg",     // R
+            "/images/P_Pic/cube_front.jpg", // B
+            "/images/P_Pic/cube_L.jpg",     // L
+            "/images/P_Pic/cube.jpg", //TOP
+            "/images/P_Pic/cube.jpg"  //BOTTOM
         ],
         "autoLoad": true,
         "autoRotate": -3,
         "maxLevel":6,
         "hfov":200,
+        "cssClass": "custom-hotspot",
         // "hotSpotDebug": true,
         "hotSpots": [
          {

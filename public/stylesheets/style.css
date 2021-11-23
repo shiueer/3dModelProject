@@ -77,3 +77,10 @@ div.custom-tooltip:hover span:after {
     height: calc(100vh - 150px);
     position: relative;
 }
+div.pnlm-render-container.img{
+    display: inline-block !important; /* change the default display type to inline-block */
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important; 
+    object-fit: contain !important;
+}

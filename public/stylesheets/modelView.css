@@ -22,12 +22,8 @@ canvas{
 .ac {
     /* position: relative !important;
     margin: auto !important; */
-    margin-top: 12vh !important;
+    margin-top: 16vh !important;
     margin-right: 3vw;
-}
-img{
-    width: 23px;
-    height: 23px;
 }
 .container-fluid{
     font-size: 18pt;
