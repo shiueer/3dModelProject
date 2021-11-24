@@ -3,7 +3,7 @@ let g_Mdata = undefined;
 
 // show E_Pic
 function showEPic(exData) {
-    let htmlStr = `<div class="row align-items-center"><div class="col-12"><p class="h1 text-center text-white pt-5">- 主題展覽 -</p></div>`
+    let htmlStr = `<div class="row align-items-center">`
     for (let i = 0; i < exData.length; i++) {
         // console.log(exData[i].E_Pic);
         htmlStr += `<div class="col-6"><a href="/ExhibitionList?id=${i + 1}"><img class="img-thumbnail w-50" src="${exData[i]["E_Pic"]}"></a></div>`
@@ -12,7 +12,7 @@ function showEPic(exData) {
         }
     }
     htmlStr += `</div>`
-    // console.log(htmlStr);
+    console.log(htmlStr);
     $('#exhibition').append(htmlStr);
 }
 
