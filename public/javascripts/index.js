@@ -3,11 +3,11 @@ let g_Mdata = undefined;
 
 // show E_Pic
 function showEPic(exData) {
-    let htmlStr = `<div class="row align-items-center">`
+    let htmlStr = `<div class="row text-center ml-0 mr-0">`
     for (let i = 0; i < exData.length; i++) {
         // console.log(exData[i].E_Pic);
-        htmlStr += `<div class="col-6"><a href="/ExhibitionList?id=${i + 1}"><img class="img-thumbnail w-50" src="${exData[i]["E_Pic"]}"></a></div>`
-        if ((i + 1) % 4 == 0) {
+        htmlStr += `<div class="col-4 pt-5"><a href="/ExhibitionList?id=${i + 1}"><img class="img-thumbnail w-75" src="${exData[i]["E_Pic"]}"></a></div>`
+        if ((i + 1) % 3 == 0) {
             htmlStr += `</div><div class="row">`
         }
     }
@@ -89,11 +89,11 @@ function showP(modelData){
         "type": "cubemap",
         "cubeMap": [
             "/images/P_Pic/cube_front.jpg", // F
-            "/images/P_Pic/cube_R.jpg",     // R
+            "/images/P_Pic/cube_R.png",     // R
             "/images/P_Pic/cube_front.jpg", // B
-            "/images/P_Pic/cube_L.jpg",     // L
-            "/images/P_Pic/cube.jpg", //TOP
-            "/images/P_Pic/cube.jpg"  //BOTTOM
+            "/images/P_Pic/cube_L.png",     // L
+            "/images/P_Pic/cube_front.jpg", //TOP
+            "/images/P_Pic/cube_front.jpg"  //BOTTOM
         ],
         "autoLoad": true,
         "autoRotate": -3,

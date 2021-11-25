@@ -24,7 +24,7 @@
 
 <body>
   <% include ./navBar.ejs %>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col" id="panorama"></div>
       </div>
@@ -41,10 +41,10 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-2 mt-5"><p class="fs-1">線上展覽</p></div>
+        <div class="col-2 mt-5"><p class="fs-2">線上展覽</p></div>
         <div class="col-10 mt-5 pt-4 influid"><hr class="m-auto w-100"></div>
       </div>
-      <div class="mt-5" id="exhibition">
+      <div class="row mt-5 ml-0 mr-0" id="exhibition">
       </div>
       <% include ./backbtn.ejs %>
       <% include ./shareButton.ejs %>
