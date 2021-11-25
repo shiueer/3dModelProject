@@ -73,7 +73,7 @@ div.custom-tooltip:hover span:after {
     background: gray;
     resize: horizontal;
     overflow: auto;
-    max-width: 150%;
+    max-width: 100%;
     height: calc(100vh - 150px);
     position: relative;
 }
