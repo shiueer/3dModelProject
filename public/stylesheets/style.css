@@ -75,7 +75,7 @@ div.custom-tooltip:hover span:after {
     resize: horizontal;
     overflow: auto;
     max-width: 100%;
-    height: calc(100vh - 150px);
+    height: calc(100% - 150px);
     position: relative;
 }
 div.pnlm-render-container.img{

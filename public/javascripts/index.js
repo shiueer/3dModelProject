@@ -103,7 +103,7 @@ function showP(modelData){
         // "hotSpotDebug": true,
         "hotSpots": [
          {
-             "pitch": 0,
+             "pitch": -10,
              "yaw": 0,
              "createTooltipFunc": setHotspot,
              "createTooltipArgs": {
@@ -114,7 +114,7 @@ function showP(modelData){
             }
          },
          {
-             "pitch": 0,
+             "pitch": -10,
              "yaw": 35,
              "createTooltipFunc": setHotspot,
              "createTooltipArgs": {
@@ -125,7 +125,7 @@ function showP(modelData){
             }
          },
          {
-             "pitch": 0,
+             "pitch": -10,
              "yaw": -35,
              "createTooltipFunc": setHotspot,
              "createTooltipArgs": {
@@ -133,10 +133,10 @@ function showP(modelData){
                  "text": modelData[2][keys[2]],
                  "glb": modelData[2][keys[3]],
                  "img": modelData[2][keys[4]]
-                  }
+            }
          },
          {
-             "pitch": 0,
+             "pitch": -10,
              "yaw": 145,
              "createTooltipFunc": setHotspot,
              "createTooltipArgs": {
@@ -147,7 +147,7 @@ function showP(modelData){
             }
          },
          {
-             "pitch": 0,
+             "pitch": -10,
              "yaw": 180,
              "createTooltipFunc": setHotspot,
              "createTooltipArgs": {
@@ -158,7 +158,7 @@ function showP(modelData){
             }
          },
          {
-             "pitch": 0,
+             "pitch": -10,
              "yaw": 215,
              "createTooltipFunc": setHotspot,
              "createTooltipArgs": {
@@ -167,7 +167,137 @@ function showP(modelData){
                  "glb": modelData[5][keys[3]],
                  "img": modelData[5][keys[4]]
             }
-          }
+          },
+          {
+            "pitch": 10,
+            "yaw": 0,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 10,
+            "yaw": 35,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 10,
+            "yaw": -35,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 10,
+            "yaw": 145,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 10,
+            "yaw": 180,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 10,
+            "yaw": 215,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 0,
+            "yaw": 50,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[0][keys[1]],
+                "text": modelData[0][keys[2]],
+                "glb": modelData[0][keys[3]],
+                "img": modelData[0][keys[4]]
+           }
+         },
+         {
+            "pitch": 0,
+            "yaw": 95,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 0,
+            "yaw": 130,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },
+         {
+            "pitch": 0,
+            "yaw": -50,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },{
+            "pitch": 0,
+            "yaw": -95,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         },{
+            "pitch": 0,
+            "yaw": -130,
+            "createTooltipFunc": setHotspot,
+            "createTooltipArgs": {
+                "id": modelData[5][keys[1]],
+                "text": modelData[5][keys[2]],
+                "glb": modelData[5][keys[3]],
+                "img": modelData[5][keys[4]]
+           }
+         }
         ]
     });
 };
