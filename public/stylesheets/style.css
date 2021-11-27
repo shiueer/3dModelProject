@@ -13,9 +13,10 @@
     margin-top: 22vh;
 }
 #exhibition{
-    margin-top: 22vh;
+    margin-top: 10%;
     background: #DCDDDD;
-    padding-bottom: 10vh;
+    padding-bottom: 3%;
+    padding-left: 3%;
 }
 .col-6 {
     text-align: center !important;
