@@ -89,11 +89,11 @@ function showP(modelData){
         "type": "cubemap",
         "cubeMap": [
             "/images/P_Pic/cube_front.jpg", // F
-            "/images/P_Pic/cube_R.png",     // R
+            "/images/P_Pic/2圖-5000.png",     // R
             "/images/P_Pic/cube_front.jpg", // B
-            "/images/P_Pic/cube_L.png",     // L
-            "/images/P_Pic/cube_front.jpg", //TOP
-            "/images/P_Pic/cube_front.jpg"  //BOTTOM
+            "/images/P_Pic/2字-5000.png",     // L
+            "/images/P_Pic/cube_T.png",  //TOP
+            "/images/P_Pic/cube_T.png"  //BOTTOM
         ],
         "autoLoad": true,
         "autoRotate": -3,
