@@ -55,7 +55,7 @@ router.get('/', async function (req, res, next) { // async(使異部同步) 一�
     res.render('index', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', exData:exData, modelData:modelData})
   } catch(error) {
     console.log(error);
-    res.render('index', {title:'埔里基督教醫院 - 交趾尪仔俗語故事title', exData:'', modelData:''})
+    res.render('index', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', exData:'', modelData:''})
   }
 });
 
@@ -122,6 +122,55 @@ router.get('/ModelView', function (req, res, next) {
       }
     }
   })
+});
+// get data 
+let getAllModel = (req) => {
+  return new Promise((rs, rj) => {
+    let sql = 'SELECT `M_ID`,`M_Name`,`M_Pic` FROM `model` WHERE 1;'
+    req.sql(sql, function(err, result) {
+      if(err) {
+        console.log("[SELECT ERROR] -", err);
+        rj(err)
+      } else {
+        console.log(result);
+        if(result.length == 0) {
+          rj(404);
+        } else {
+          rs(result);
+        }
+      }
+    });
+  })
+}
+
+let getEID = (req) => {
+  return new Promise((rs, rj) => { // rs->resolve, rj->reject
+    let sql = 'SELECT `E_ID`,`E_Name` FROM `exhibition` WHERE 1;'
+    req.sql(sql, function(err, result) {
+      if(err) {
+        console.log("[SELECT ERROR] -", err);
+        rj(err)
+      } else {
+        if(result.length == 0) {
+          rj(404);
+        } else {
+          rs(result);
+        }
+      }
+    });
+  })
+}
+// get data to show list of all model and make button to filter
+router.get('/AllModelList', async function (req, res, next) { // async(使異部同步) 一定要搭配 try catch(原本是 promise.then)
+    try {
+      let Mdata = await getAllModel(req);
+      let Edata = await getEID(req);
+      // console.log(Mdata,Edata);
+      res.render('AllModelList', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', Mdata:Mdata, Edata:Edata})
+    } catch(error) {
+      console.log(error);
+      res.render('AllModelList', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', Mdata:'', Edata:''})
+    }
 });
 
 module.exports = router;

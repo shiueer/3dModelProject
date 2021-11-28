@@ -1,6 +1,19 @@
 let lang = true;
 let g_Mdata = undefined;
-
+// make choose E button and show the model list of the exhibiton
+function EButton(EData) {
+    let htmlStr = `<div class="col-3"><a class="btn btn-primary" href="/AllModelList">所有模型</a></div>`
+    for (let i = 0; i < EData.length; i++) {
+        console.log(EData);
+        htmlStr += `<div class="col-3"><a class="btn btn-primary" href="/AllModelList?id=${EData[i]["E_ID"]}">${EData[i]["E_Name"]}</a></div>`
+        if ((i + 1) % 4 == 0) {
+            htmlStr += `</div><div class="row">`
+        }
+    }
+    htmlStr += `</div>`
+    // console.log(htmlStr);
+    $('#choosebtn').append(htmlStr);
+}
 // show E_Pic
 function showEPic(exData) {
     let htmlStr = `<div class="row text-center ml-0 mr-0">`
@@ -12,7 +25,7 @@ function showEPic(exData) {
         }
     }
     htmlStr += `</div>`
-    console.log(htmlStr);
+    // console.log(htmlStr);
     $('#exhibition').append(htmlStr);
 }
 
@@ -173,10 +186,10 @@ function showP(modelData){
             "yaw": 0,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[6][keys[1]],
+                "text": modelData[6][keys[2]],
+                "glb": modelData[6][keys[3]],
+                "img": modelData[6][keys[4]]
            }
          },
          {
@@ -184,10 +197,10 @@ function showP(modelData){
             "yaw": 35,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[7][keys[1]],
+                "text": modelData[7][keys[2]],
+                "glb": modelData[7][keys[3]],
+                "img": modelData[7][keys[4]]
            }
          },
          {
@@ -195,10 +208,10 @@ function showP(modelData){
             "yaw": -35,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[8][keys[1]],
+                "text": modelData[8][keys[2]],
+                "glb": modelData[8][keys[3]],
+                "img": modelData[8][keys[4]]
            }
          },
          {
@@ -206,10 +219,10 @@ function showP(modelData){
             "yaw": 145,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[9][keys[1]],
+                "text": modelData[9][keys[2]],
+                "glb": modelData[9][keys[3]],
+                "img": modelData[9][keys[4]]
            }
          },
          {
@@ -217,10 +230,10 @@ function showP(modelData){
             "yaw": 180,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[10][keys[1]],
+                "text": modelData[10][keys[2]],
+                "glb": modelData[10][keys[3]],
+                "img": modelData[10][keys[4]]
            }
          },
          {
@@ -228,10 +241,10 @@ function showP(modelData){
             "yaw": 215,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[11][keys[1]],
+                "text": modelData[11][keys[2]],
+                "glb": modelData[11][keys[3]],
+                "img": modelData[11][keys[4]]
            }
          },
          {
@@ -239,10 +252,10 @@ function showP(modelData){
             "yaw": 50,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[0][keys[1]],
-                "text": modelData[0][keys[2]],
-                "glb": modelData[0][keys[3]],
-                "img": modelData[0][keys[4]]
+                "id": modelData[12][keys[1]],
+                "text": modelData[12][keys[2]],
+                "glb": modelData[12][keys[3]],
+                "img": modelData[12][keys[4]]
            }
          },
          {
@@ -250,10 +263,10 @@ function showP(modelData){
             "yaw": 95,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[13][keys[1]],
+                "text": modelData[13][keys[2]],
+                "glb": modelData[13][keys[3]],
+                "img": modelData[13][keys[4]]
            }
          },
          {
@@ -261,10 +274,10 @@ function showP(modelData){
             "yaw": 130,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[14][keys[1]],
+                "text": modelData[14][keys[2]],
+                "glb": modelData[14][keys[3]],
+                "img": modelData[14][keys[4]]
            }
          },
          {
@@ -272,30 +285,30 @@ function showP(modelData){
             "yaw": -50,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[15][keys[1]],
+                "text": modelData[15][keys[2]],
+                "glb": modelData[15][keys[3]],
+                "img": modelData[15][keys[4]]
            }
          },{
             "pitch": 0,
             "yaw": -95,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[16][keys[1]],
+                "text": modelData[16][keys[2]],
+                "glb": modelData[16][keys[3]],
+                "img": modelData[16][keys[4]]
            }
          },{
             "pitch": 0,
             "yaw": -130,
             "createTooltipFunc": setHotspot,
             "createTooltipArgs": {
-                "id": modelData[5][keys[1]],
-                "text": modelData[5][keys[2]],
-                "glb": modelData[5][keys[3]],
-                "img": modelData[5][keys[4]]
+                "id": modelData[17][keys[1]],
+                "text": modelData[17][keys[2]],
+                "glb": modelData[17][keys[3]],
+                "img": modelData[17][keys[4]]
            }
          }
         ]
