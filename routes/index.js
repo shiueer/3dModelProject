@@ -126,8 +126,16 @@ router.get('/ModelView', function (req, res, next) {
 // get data 
 let getAllModel = (req) => {
   return new Promise((rs, rj) => {
-    let sql = 'SELECT `M_ID`,`M_Name`,`M_Pic` FROM `model` WHERE 1;'
-    req.sql(sql, function(err, result) {
+    let E_ID = req.query;
+    let params = [E_ID.id];
+    console.log(params);
+    let sql;
+    if(params==0){
+      sql = 'SELECT `M_ID`,`M_Name`,`M_Pic` FROM `model` WHERE 1;';
+    }else{
+      sql = 'SELECT `model`.`M_ID`,`M_Name`,`M_Pic` FROM `model`,`connection`,`exhibition` WHERE `exhibition`.`E_ID` = ? AND `exhibition`.`E_ID` = `connection`.`E_ID` AND `model`.`M_ID` = `connection`.`M_ID`;';
+    }
+    req.sql(sql, params, function(err, result) {
       if(err) {
         console.log("[SELECT ERROR] -", err);
         rj(err)
@@ -165,7 +173,7 @@ router.get('/AllModelList', async function (req, res, next) { // async(使異部
     try {
       let Mdata = await getAllModel(req);
       let Edata = await getEID(req);
-      // console.log(Mdata,Edata);
+      console.log(Mdata,Edata);
       res.render('AllModelList', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', Mdata:Mdata, Edata:Edata})
     } catch(error) {
       console.log(error);
