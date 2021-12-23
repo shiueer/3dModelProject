@@ -70,10 +70,15 @@ router.get('/', async function (req, res, next) { // async(使異部同步) 一�
     let exData = await getExhibition(req);
     let modelData = await get360Model(req);
     let Pbg = await getPBG(req);
-    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: exData, modelData: modelData, Pbg: Pbg})
+    // object for addressing db data problem
+    var PData = {
+      Pbg: Pbg,
+      modelData: modelData
+    };
+    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: exData, PData: PData })
   } catch (error) {
     console.log(error);
-    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: '', modelData: '', Pbg: ''})
+    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: '', PData: '' })
   }
 });
 
@@ -197,10 +202,10 @@ router.get('/AllModelList', async function (req, res, next) { // async(使異部
     let Edata = await getEID(req);
     // console.log(Mdata,Edata);
     console.log('======', req.query['id']);
-    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: Mdata, Edata: Edata, url_id: parseInt(req.query['id'])})
+    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: Mdata, Edata: Edata, url_id: parseInt(req.query['id']) })
   } catch (error) {
     console.log(error);
-    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: '', Edata: ''})
+    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: '', Edata: '' })
   }
 });
 
