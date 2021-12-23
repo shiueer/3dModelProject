@@ -46,16 +46,34 @@ let get360Model = (req) => {
   })
 }
 
+let getPBG = (req) => {
+  return new Promise((rs, rj) => { // rs->resolve, rj->reject
+    let sql = 'SELECT `F_Pic`, `R_Pic`, `B_Pic`, `L_Pic`, `T_Pic`, `BTM_Pic` FROM `pannellumbg` WHERE `P_ID` = 1;'
+    req.sql(sql, function (err, result) {
+      if (err) {
+        console.log("[SELECT ERROR] -", err);
+        rj(err)
+      } else {
+        if (result.length == 0) {
+          rj(404);
+        } else {
+          rs(result);
+        }
+      }
+    });
+  })
+}
 
 // fetch exhibitions' data from db
 router.get('/', async function (req, res, next) { // async(使異部同步) 一定要搭配 try catch(原本是 promise.then)
   try {
     let exData = await getExhibition(req);
     let modelData = await get360Model(req);
-    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: exData, modelData: modelData })
+    let Pbg = await getPBG(req);
+    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: exData, modelData: modelData, Pbg: Pbg})
   } catch (error) {
     console.log(error);
-    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: '', modelData: '' })
+    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: '', modelData: '', Pbg: ''})
   }
 });
 
@@ -123,6 +141,7 @@ router.get('/ModelView', function (req, res, next) {
     }
   })
 });
+
 // get data 
 let getAllModel = (req) => {
   return new Promise((rs, rj) => {
@@ -169,6 +188,8 @@ let getEID = (req) => {
   })
 }
 
+
+
 // get data to show list of all model and make button to filter
 router.get('/AllModelList', async function (req, res, next) { // async(使異部同步) 一定要搭配 try catch(原本是 promise.then)
   try {
@@ -176,10 +197,10 @@ router.get('/AllModelList', async function (req, res, next) { // async(使異部
     let Edata = await getEID(req);
     // console.log(Mdata,Edata);
     console.log('======', req.query['id']);
-    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: Mdata, Edata: Edata, url_id: parseInt(req.query['id']) })
+    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: Mdata, Edata: Edata, url_id: parseInt(req.query['id'])})
   } catch (error) {
     console.log(error);
-    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: '', Edata: '' })
+    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: '', Edata: ''})
   }
 });
 

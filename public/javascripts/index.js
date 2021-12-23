@@ -89,8 +89,8 @@ function showP(modelData){
             "/images/P_Pic/2圖-5000.png",     // R
             "/images/P_Pic/cube_front.jpg",   // B
             "/images/P_Pic/2字-5000.png",     // L
-            "/images/P_Pic/cube_T.png",      //TOP
-            "/images/P_Pic/cube_T.png"       //BOTTOM
+            "/images/P_Pic/cube_T.png",      // TOP
+            "/images/P_Pic/cube_T.png"       // BOTTOM
         ],
         "autoLoad": true,
         "autoRotate": -3,
