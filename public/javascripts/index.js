@@ -1,16 +1,22 @@
 let lang = true;
 let g_Mdata = undefined;
 // make choose E button and show the model list of the exhibiton
-function EButton(EData) {
-    let htmlStr = `<div class="col-3"><a class="btn btn-primary" href="/AllModelList?id=0">所有模型</a></div>`
+function EButton(EData, url_id) {
+    console.log(url_id);
+    let htmlStr = `<div class="col-3"><a id="0" class="btn btn-secondary" href="/AllModelList?id=0" style="background-color: #754C24">所有模型</a></div>`
     for (let i = 0; i < EData.length; i++) {
-        htmlStr += `<div class="col-3"><a class="btn btn-primary" href="/AllModelList?id=${EData[i]["E_ID"]}">${EData[i]["E_Name"]}</a></div>`
+        htmlStr += `<div  class="col-3"><a id="${EData[i]["E_ID"]}" class="btn btn-secondary" href="/AllModelList?id=${EData[i]["E_ID"]}" style="background-color: #754C24" >${EData[i]["E_Name"]}</a></div>`
         if ((i + 1) % 4 == 0) {
             htmlStr += `</div><div class="row">`
         }
     }
     htmlStr += `</div>`
     $('#choosebtn').append(htmlStr);
+    if(url_id == 0) {
+        $(`#0`).css("background-color", "#E50044");
+    } else {
+        $(`#${EData[url_id-1]["E_ID"]}`).css("background-color", "#E50044");
+    }
 }
 // show E_Pic
 function showEPic(exData) {
@@ -79,12 +85,12 @@ function showP(modelData){
     pannellum.viewer('panorama', {
         "type": "cubemap",
         "cubeMap": [
-            "/images/P_Pic/cube_front.jpg", // F
+            "/images/P_Pic/cube_front.jpg",   // F
             "/images/P_Pic/2圖-5000.png",     // R
-            "/images/P_Pic/cube_front.jpg", // B
+            "/images/P_Pic/cube_front.jpg",   // B
             "/images/P_Pic/2字-5000.png",     // L
-            "/images/P_Pic/cube_T.png",  //TOP
-            "/images/P_Pic/cube_T.png"  //BOTTOM
+            "/images/P_Pic/cube_T.png",      //TOP
+            "/images/P_Pic/cube_T.png"       //BOTTOM
         ],
         "autoLoad": true,
         "autoRotate": -3,

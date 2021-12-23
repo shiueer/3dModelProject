@@ -12,13 +12,13 @@ router.get('/About', function (req, res, next) {
 let getExhibition = (req) => {
   return new Promise((rs, rj) => {
     let sql = 'SELECT * FROM `exhibition` WHERE 1;'
-    req.sql(sql, function(err, result) {
-      if(err) {
+    req.sql(sql, function (err, result) {
+      if (err) {
         console.log("[SELECT ERROR] -", err);
         rj(err)
       } else {
-        console.log(result);
-        if(result.length == 0) {
+        // console.log(result);
+        if (result.length == 0) {
           rj(404);
         } else {
           rs(result);
@@ -31,12 +31,12 @@ let getExhibition = (req) => {
 let get360Model = (req) => {
   return new Promise((rs, rj) => { // rs->resolve, rj->reject
     let sql = 'SELECT * FROM `pannellum` WHERE 1;'
-    req.sql(sql, function(err, result) {
-      if(err) {
+    req.sql(sql, function (err, result) {
+      if (err) {
         console.log("[SELECT ERROR] -", err);
         rj(err)
       } else {
-        if(result.length == 0) {
+        if (result.length == 0) {
           rj(404);
         } else {
           rs(result);
@@ -52,10 +52,10 @@ router.get('/', async function (req, res, next) { // async(使異部同步) 一�
   try {
     let exData = await getExhibition(req);
     let modelData = await get360Model(req);
-    res.render('index', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', exData:exData, modelData:modelData})
-  } catch(error) {
+    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: exData, modelData: modelData })
+  } catch (error) {
     console.log(error);
-    res.render('index', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', exData:'', modelData:''})
+    res.render('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', exData: '', modelData: '' })
   }
 });
 
@@ -73,7 +73,7 @@ router.get('/index', function (req, res, next) {
         console.log('No DATA found');
         res.send('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Pdata: '' });
       } else {
-        console.log(result);
+        // console.log(result);
         res.send('index', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Pdata: result });
       }
     }
@@ -95,7 +95,7 @@ router.get('/ExhibitionList', function (req, res, next) {
         console.log('No DATA found');
         res.render('ExhibitionList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: '' });
       } else {
-        console.log(result);
+        // console.log(result);
         res.render('ExhibitionList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: result });
       }
     }
@@ -130,18 +130,18 @@ let getAllModel = (req) => {
     let params = [E_ID.id];
     console.log(params);
     let sql;
-    if(params==0){
+    if (params == 0) {
       sql = 'SELECT `M_ID`,`M_Name`,`M_Pic` FROM `model` WHERE 1;';
-    }else{
+    } else {
       sql = 'SELECT `model`.`M_ID`,`M_Name`,`M_Pic` FROM `model`,`connection`,`exhibition` WHERE `exhibition`.`E_ID` = ? AND `exhibition`.`E_ID` = `connection`.`E_ID` AND `model`.`M_ID` = `connection`.`M_ID`;';
     }
-    req.sql(sql, params, function(err, result) {
-      if(err) {
+    req.sql(sql, params, function (err, result) {
+      if (err) {
         console.log("[SELECT ERROR] -", err);
         rj(err)
       } else {
-        console.log(result);
-        if(result.length == 0) {
+        // console.log(result);
+        if (result.length == 0) {
           rj(404);
         } else {
           rs(result);
@@ -154,12 +154,12 @@ let getAllModel = (req) => {
 let getEID = (req) => {
   return new Promise((rs, rj) => { // rs->resolve, rj->reject
     let sql = 'SELECT `E_ID`,`E_Name` FROM `exhibition` WHERE 1;'
-    req.sql(sql, function(err, result) {
-      if(err) {
+    req.sql(sql, function (err, result) {
+      if (err) {
         console.log("[SELECT ERROR] -", err);
         rj(err)
       } else {
-        if(result.length == 0) {
+        if (result.length == 0) {
           rj(404);
         } else {
           rs(result);
@@ -168,17 +168,19 @@ let getEID = (req) => {
     });
   })
 }
+
 // get data to show list of all model and make button to filter
 router.get('/AllModelList', async function (req, res, next) { // async(使異部同步) 一定要搭配 try catch(原本是 promise.then)
-    try {
-      let Mdata = await getAllModel(req);
-      let Edata = await getEID(req);
-      console.log(Mdata,Edata);
-      res.render('AllModelList', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', Mdata:Mdata, Edata:Edata})
-    } catch(error) {
-      console.log(error);
-      res.render('AllModelList', {title:'埔里基督教醫院 - 交趾尪仔俗語故事', Mdata:'', Edata:''})
-    }
+  try {
+    let Mdata = await getAllModel(req);
+    let Edata = await getEID(req);
+    // console.log(Mdata,Edata);
+    console.log('======', req.query['id']);
+    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: Mdata, Edata: Edata, url_id: parseInt(req.query['id']) })
+  } catch (error) {
+    console.log(error);
+    res.render('AllModelList', { title: '埔里基督教醫院 - 交趾尪仔俗語故事', Mdata: '', Edata: '' })
+  }
 });
 
 module.exports = router;
